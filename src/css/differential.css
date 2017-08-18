@@ -1,0 +1,25 @@
+#background_canvas {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.input_div {
+    position: fixed;
+    bottom:5px;
+    right:5px;
+    z-index: 1;
+    width:300px;
+    /*display: none;*/
+}
+.submit_div {
+    text-align: right;
+    margin:10px 0 0;
+}
+.instructions {
+    position: fixed;
+    top:5px;
+    left:5px;
+    z-index: 2;
+}

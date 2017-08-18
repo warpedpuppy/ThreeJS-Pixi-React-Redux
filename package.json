@@ -1,0 +1,52 @@
+{
+  "name": "fun_with_squares",
+  "version": "1.0.0",
+  "description": "asdf",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./bin/www",
+    "wp": "node ./node_modules/.bin/webpack",
+    "prod": "NODE_ENV=production ./node_modules/.bin/webpack",
+    "watch": "node ./node_modules/.bin/webpack --watch",
+    "dev": "node ./node_modules/.bin/webpack-dev-server --content-base src --inline --hot"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/warpedpuppy/fun_with_rectangles.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/warpedpuppy/fun_with_rectangles/issues"
+  },
+  "homepage": "https://github.com/warpedpuppy/fun_with_rectangles#readme",
+  "dependencies": {
+    "babel-core": "^6.17.0",
+    "babel-loader": "^6.2.0",
+    "babel-plugin-add-module-exports": "^0.1.2",
+    "babel-plugin-react-html-attrs": "^2.0.0",
+    "babel-plugin-transform-class-properties": "^6.3.13",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-stage-0": "^6.3.13",
+    "react": "^0.14.6",
+    "react-dom": "^0.14.6",
+    "webpack": "2.1.0-beta.22",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.17.0",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-transform-class-properties": "^6.10.2",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.11.1",
+    "css-loader": "^0.23.1",
+    "react-addons-test-utils": "^15.3.0",
+    "style-loader": "^0.13.1",
+    "webpack": "2.1.0-beta.22",
+    "webpack-dev-server": "^1.14.1"
+  }
+}
