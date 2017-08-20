@@ -9,6 +9,16 @@ module.exports = {
   module: {
     loaders: [
       {
+				test: /\.json$/,
+				include: path.join(__dirname, 'node_modules', 'pixi.min.js'),
+				loader: 'json',
+			},
+      {
+				test: /\.js$/,
+				exclude: path.join(__dirname, 'node_modules'),
+				loader: 'babel'
+			},
+      {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
         loader: 'babel-loader',
