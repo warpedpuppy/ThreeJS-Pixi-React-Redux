@@ -33,6 +33,7 @@
     "babel-preset-stage-0": "^6.3.13",
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
+    "react-pixi": "^0.9.14",
     "react-window-resize-listener": "^1.1.0",
     "webpack": "2.1.0-beta.22",
     "webpack-dev-server": "^1.14.1"

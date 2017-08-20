@@ -5,10 +5,10 @@
 #background_canvas {
 
     width: 100%;
-    background-color: #FF9900;
-}
-canvas {
 
+}
+#background_canvas canvas {
+  background-color: #FF9900;
 }
 .input_div {
     position: fixed;
