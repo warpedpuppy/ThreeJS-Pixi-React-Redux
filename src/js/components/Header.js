@@ -11,8 +11,15 @@ export default class Header extends React.Component {
   render() {
     return (
       <div>
-      <div className="alert alert-info instructions">Click and drag to make a rectangle</div>
-      
+      <div className="alert alert-info instructions">
+      <h1>instructions</h1>
+      <ol>
+      <li>click and drag to draw a square</li>
+      <li>change the height of the square in the input field</li>
+      <li>click the 'preview' button to see your square in 3D</li>
+      </ol>
+      </div>
+
       </div>
     );
   }

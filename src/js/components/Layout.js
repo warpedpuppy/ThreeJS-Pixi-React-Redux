@@ -12,8 +12,15 @@ export default class Layout extends React.Component {
 
     this.state = {
       title: "Welcome",
+      block: new PIXI.Graphics(),
+      block_height:0,
+      block_width:0
     };
 
+  }
+  changeDimensions(block_width, block_height){
+    this.setState({block_width});
+    this.setState({block_height});
   }
 
   render() {
@@ -21,8 +28,8 @@ export default class Layout extends React.Component {
     return (
       <div>
         <Header changeTitle={"asfd"}  />
-        <Canvas />
-        <InputDiv />
+        <Canvas block={this.state.block} block_width={this.state.block_width} block_height={this.state.block_height} changeDimensions={this.changeDimensions.bind(this)}/>
+        <InputDiv block={this.state.block} block_width={this.state.block_width} block_height={this.state.block_height}  changeDimensions={this.changeDimensions.bind(this)}/>
         <Footer />
       </div>
     );

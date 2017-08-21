@@ -34,7 +34,7 @@ export default class Canvas extends React.Component {
       stage.addChild(background);
       this.background = background;
 
-      this.block = new PIXI.Graphics()
+      this.block = this.props.block;
 
 
 
@@ -74,6 +74,8 @@ export default class Canvas extends React.Component {
            var block_height = this.renderer.plugins.interaction.mouse.global.y - this.startY;
            this.block.clear();
            this.block.beginFill("#333333").drawRect(0, 0, block_width, block_height).endFill();
+           this.props.changeDimensions(block_width,block_height);
+
        }
    }
 
