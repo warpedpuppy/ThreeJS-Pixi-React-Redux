@@ -5,19 +5,12 @@ var path = require('path');
 module.exports = {
   context: path.join(__dirname, "src"),
   devtool: debug ? "inline-sourcemap" : null,
-  entry: "./js/main.js",
+  entry: {
+    two_dimension: "./js/main.js",
+    three_dimension: "./js/main_three_d.js"
+  },
   module: {
     loaders: [
-      {
-				test: /\.json$/,
-				include: path.join(__dirname, 'node_modules', 'pixi.min.js'),
-				loader: 'json',
-			},
-      {
-				test: /\.js$/,
-				exclude: path.join(__dirname, 'node_modules'),
-				loader: 'babel'
-			},
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
@@ -29,7 +22,7 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, "src"),
-    filename: "main.min.js"
+    filename: "[name].min.js"
   },
   plugins: debug ? [] : [
     new webpack.optimize.DedupePlugin(),
