@@ -12,11 +12,12 @@ export default class Header extends React.Component {
     return (
       <div>
       <div className="alert alert-info instructions">
-      <h1>instructions</h1>
+      <h4>convert 2d rectangle to 3d</h4>
+      <p>This is a practice experiment using react and threejs.</p>
       <ol>
-      <li>click and drag to draw a square</li>
-      <li>change the height of the square in the input field</li>
-      <li>click the 'preview' button to see your square in 3D</li>
+      <li>click and drag to draw a rectangle.</li>
+      <li>use the input field to control the height.</li>
+      <li>press the 'render in 3d' button to see the rectangle in three dimensions.</li>
       </ol>
       </div>
 

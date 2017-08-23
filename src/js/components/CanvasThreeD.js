@@ -1,6 +1,7 @@
 import React from "react";
 import QueryString from "query-string";
 import THREE from "three";
+import { WindowResizeListener } from 'react-window-resize-listener';
 
 export default class CanvasThreeD extends React.Component {
 
@@ -39,31 +40,22 @@ export default class CanvasThreeD extends React.Component {
 
     animate() {
         requestAnimationFrame( this.animate.bind(this) );
-
         if(this.mouse_down === false){
             this.cube.rotation.x += 0.0025;
             this.cube.rotation.y += 0.0025;
         }
-
-
         this.renderer.render(this.scene, this.camera);
     };
-
-
-
     mouseDown(){
       this.mouse_down = true;
     }
     mouseMove(e){
       if(this.mouse_down === true){
-
-
           if(e.pageX < this.startXMovement){
               this.cube.rotation.y -= 0.05;
           } else if(e.pageX > this.startXMovement) {
               this.cube.rotation.y += 0.05;
           }
-
           if(e.pageY < this.startYMovement){
               this.cube.rotation.x -= 0.05;
           } else if(e.pageY > this.startYMovement){
@@ -72,20 +64,21 @@ export default class CanvasThreeD extends React.Component {
           this.startXMovement = e.pageX;
           this.startYMovement = e.pageY;
       }
-
     }
     mouseUp(){
       this.mouse_down = false;
     }
 
 
-
-
-
   render() {
     return (
-      <div>
-      </div>
+      <WindowResizeListener onResize={windowSize => {
+      this.height = windowSize.windowHeight;
+      this.width = windowSize.windowWidth;
+      this.camera.aspect = window.innerWidth / window.innerHeight;
+      this.camera.updateProjectionMatrix();
+      this.renderer.setSize( window.innerWidth, window.innerHeight );
+    }}/>
     );
   }
 }

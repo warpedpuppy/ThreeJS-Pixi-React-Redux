@@ -26,9 +26,9 @@ export default class Layout extends React.Component {
 
   render() {
     return (
-      <div className="input_div">
+      <div className="input_div" id="inputDiv">
               <div className="cinput_text_div">
-                  <input type="text" className="form-control form-control-lg" id="enterBlockSize" placeholder="Enter integer to change block height"  onChange={this.handleChange.bind(this)} />
+                  <input type="text" className="form-control form-control-lg" id="enterBlockSize" placeholder="Enter integer to change block height"  onChange={this.handleChange.bind(this)} value={Math.abs(this.props.block_height)}/>
               </div>
               <div className="submit_div">
                   <button className="btn btn-large" id="preview3JS" onClick={this.open3D.bind(this)} >preview in three.js</button>

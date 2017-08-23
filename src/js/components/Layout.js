@@ -24,13 +24,11 @@ export default class Layout extends React.Component {
   }
 
   render() {
-
     return (
       <div>
-        <Header changeTitle={"asfd"}  />
+        <Header />
         <Canvas block={this.state.block} block_width={this.state.block_width} block_height={this.state.block_height} changeDimensions={this.changeDimensions.bind(this)}/>
         <InputDiv block={this.state.block} block_width={this.state.block_width} block_height={this.state.block_height}  changeDimensions={this.changeDimensions.bind(this)}/>
-        <Footer />
       </div>
     );
   }

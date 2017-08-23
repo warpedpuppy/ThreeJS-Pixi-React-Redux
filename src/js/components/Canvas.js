@@ -1,5 +1,5 @@
 import React from "react";
-import { WindowResizeListener } from 'react-window-resize-listener'
+import { WindowResizeListener } from 'react-window-resize-listener';
 export default class Canvas extends React.Component {
 
 
@@ -39,8 +39,10 @@ export default class Canvas extends React.Component {
 
      this.animate();
      this.drawing = false;
+     this.document = document;
 
    }
+
    draw_square(e) {
 
        this.drawing = true;
@@ -52,6 +54,10 @@ export default class Canvas extends React.Component {
        this.block.y = this.startY;
        this.block.clear();
        this.background.addChild(this.block);
+
+       document.getElementById("inputDiv").className = "inputVisible";
+
+
    }
 
    end_draw_square(e) {
@@ -72,6 +78,7 @@ export default class Canvas extends React.Component {
            var block_width = this.renderer.plugins.interaction.mouse.global.x - this.startX;
            var block_height = this.renderer.plugins.interaction.mouse.global.y - this.startY;
            this.block.clear();
+
            this.block.beginFill("#333333").drawRect(0, 0, block_width, block_height).endFill();
            this.props.changeDimensions(block_width,block_height);
 
@@ -88,6 +95,7 @@ export default class Canvas extends React.Component {
         this.width = windowSize.windowWidth;
         this.renderer.resize(this.width, this.height);
         this.loaded();
+        this.props.changeDimensions(0,0);
       }}/>
       </div>
     );
