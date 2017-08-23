@@ -46,6 +46,9 @@ p, li {
   left: 5px;
   z-index: 2;
 }
+.cinput_text_div {
+  float:right;
+}
 
 body.three_d_page {
   margin: 0 !important;

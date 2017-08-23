@@ -6,21 +6,22 @@ import { WindowResizeListener } from 'react-window-resize-listener';
 export default class CanvasThreeD extends React.Component {
 
     componentDidMount() {
-      const vars = QueryString.parse(location.search);
-      var mouse_down = this.mouse_down = false;
-      var startXMovement = this.startXMovement = 0;
-      var startyMovement = this.startYMovement = 0;
-      var block_height = parseInt(vars.height);
-      var block_width =  parseInt(vars.width);
-      var percentage = ((100*block_height)/block_width)/100;
-      var height = 1*percentage;
-      var width_depth = 1;
-      var scene = new THREE.Scene();
-      var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
-      var geometry = new THREE.BoxGeometry( width_depth, height, width_depth );
-      var material = new THREE.MeshBasicMaterial( { color: 0xFFFF00, wireframe:true } );
-      var cube = this.cube = new THREE.Mesh( geometry, material );
-      var renderer = new THREE.WebGLRenderer();
+
+      var mouse_down = this.mouse_down = false,
+          startXMovement = this.startXMovement = 0,
+          startyMovement = this.startYMovement = 0;
+      const urlparams = QueryString.parse(location.search),
+            block_height = parseInt(urlparams.height),
+            block_width =  parseInt(urlparams.width),
+            percentage = ((100*block_height)/block_width)/100,
+            height = 1*percentage,
+            width_depth = 1,
+            scene = new THREE.Scene(),
+            camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 ),
+            geometry = new THREE.BoxGeometry( width_depth, height, width_depth ),
+            material = new THREE.MeshBasicMaterial( { color: 0xFFFF00, wireframe:true } ),
+            cube = this.cube = new THREE.Mesh( geometry, material ),
+            renderer = new THREE.WebGLRenderer();
 
       renderer.setSize( window.innerWidth, window.innerHeight );
       document.body.appendChild( renderer.domElement );
