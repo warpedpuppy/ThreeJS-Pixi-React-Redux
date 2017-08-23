@@ -1,0 +1,62 @@
+html, body {
+  padding:0;
+  margin: 0;
+}
+h4 {
+  font-size: 12px;
+}
+p, li {
+  font-size: 10px;
+}
+
+#background_canvas {
+  width: 100%;
+}
+
+#background_canvas canvas {
+  background-color: #FF9900;
+}
+
+.input_div {
+  display:none;
+
+}
+
+.inputVisible {
+  position: fixed;
+  bottom: 5px;
+  right: 5px;
+  z-index: 1;
+  width: 500px;
+  display:block;
+}
+
+.input_div button {
+  cursor: pointer;
+}
+
+.submit_div {
+  text-align: right;
+  margin: 10px 0 0;
+}
+
+.instructions {
+  position: fixed;
+  top: 5px;
+  left: 5px;
+  z-index: 2;
+}
+.cinput_text_div {
+  float:right;
+}
+
+body.three_d_page {
+  margin: 0 !important;
+  padding:0;
+}
+
+body.three_d_page canvas {
+  width: 100%;
+  height: 100%;
+  background-color: white
+}
