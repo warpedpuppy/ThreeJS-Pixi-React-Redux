@@ -11,14 +11,11 @@ export default class Layout extends React.Component {
 
 
   handleChange(e){
-    
-
         let block_height = parseInt(document.getElementById("enterBlockHeight").value);
         let block_width = parseInt(document.getElementById("enterBlockWidth").value);
         this.props.block.clear();
         this.props.block.beginFill("#000000").drawRect(0, 0, block_width, block_height).endFill();
         this.props.changeDimensions(block_width,block_height);
-    
   }
 
 
