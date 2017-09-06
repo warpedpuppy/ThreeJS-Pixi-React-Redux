@@ -4,6 +4,7 @@ import Footer from "./Footer";
 import Header from "./Header";
 import Canvas from "./Canvas";
 import InputDiv from "./InputDiv";
+import Canvas3D from "./CanvasThreeD";
 
 
 export default class Layout extends React.Component {
@@ -25,10 +26,11 @@ export default class Layout extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <Header />
         <Canvas block={this.state.block} block_width={this.state.block_width} block_height={this.state.block_height} changeDimensions={this.changeDimensions.bind(this)}/>
         <InputDiv block={this.state.block} block_width={this.state.block_width} block_height={this.state.block_height}  changeDimensions={this.changeDimensions.bind(this)}/>
+        <Canvas3D block_width={this.state.block_width} block_height={this.state.block_height}/>
       </div>
     );
   }
