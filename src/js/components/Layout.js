@@ -1,6 +1,5 @@
 import React from "react";
 
-import Footer from "./Footer";
 import Header from "./Header";
 import Canvas from "./Canvas";
 import InputDiv from "./InputDiv";
