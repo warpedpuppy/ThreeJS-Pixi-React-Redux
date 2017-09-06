@@ -1,61 +1,60 @@
 import React from "react";
-import { WindowResizeListener } from 'react-window-resize-listener';
 export default class Canvas extends React.Component {
 
 
 
 
   componentDidMount() {
-    var renderer = PIXI.autoDetectRenderer(0,0, {antialias: false, transparent: true, resolution: 1})
-    document.getElementById("background_canvas").appendChild(renderer.view);
-    this.renderer = renderer;
+
+    const width = this.width = 800,
+          height = this.height = 500;
+
+   
+
+    const  app = this.app = new PIXI.Application(width, height, {transparent:true}),
+          stage = this.stage = app.stage;
+
+    let  startX = this.startX = 0,
+          startY =this.startY = 0;
 
 
-   }
-   loaded(){
+    document.getElementById("background_canvas").appendChild(app.view);
+    stage.interactive = true;
+    stage.buttonMode = true;
+    stage.height = this.height;
+    stage.width = this.width;
+    
+    
 
-      var stage = new PIXI.Container(),
-        startX = 0,
-        startY = 0;
+    var t = this.background = new PIXI.Graphics();
+    t.beginFill(0xFFFFFF).drawRect(0,0,width, height).endFill();
+    t.interactive = true;
+    t.buttonMode = true;
+    t.cursor = 'pointer';
+    stage.addChild(t);
+    t.on('pointerdown', this.draw_square.bind(this));
+    stage.on('pointerup', this.end_draw_square.bind(this));
+    this.block = this.props.block;
+    stage.addChild(this.block)
 
-      this.startX = startX;
-      this.startY = startY;
-
-      stage.interactive = true;
-      stage.buttonMode = true;
-      stage.height = this.height;
-      stage.width = this.width;
-      stage.on('pointerdown', this.draw_square.bind(this));
-      stage.on('pointerup', this.end_draw_square.bind(this));
-      this.stage = stage;
-
-      var background = new this.Block(this.width, this.height, 0xFFFFFF);
-      stage.addChild(background);
-      this.background = background;
-
-      this.block = this.props.block;
-
-
-
-     this.animate();
+     app.ticker.add(this.animate.bind(this));
      this.drawing = false;
      this.document = document;
 
    }
 
    draw_square(e) {
-
+       
        this.drawing = true;
        this.background.removeChildren();
-       this.startX = this.renderer.plugins.interaction.mouse.global.x;
-       this.startY = this.renderer.plugins.interaction.mouse.global.y;
+       this.startX = this.app.renderer.plugins.interaction.mouse.global.x;
+       this.startY = this.app.renderer.plugins.interaction.mouse.global.y;
 
        this.block.x = this.startX;
        this.block.y = this.startY;
        this.block.clear();
-       this.background.addChild(this.block);
 
-       document.getElementById("inputDiv").className = "inputVisible";
+       document.getElementById("inputDiv").classList.remove("hidden");
 
 
    }
@@ -71,15 +70,13 @@ export default class Canvas extends React.Component {
    }
    animate() {
 
-       requestAnimationFrame(this.animate.bind(this));
-       this.renderer.render(this.stage);
-
        if (this.drawing === true) {
-           var block_width = this.renderer.plugins.interaction.mouse.global.x - this.startX;
-           var block_height = this.renderer.plugins.interaction.mouse.global.y - this.startY;
+           var block_width = this.app.renderer.plugins.interaction.mouse.global.x - this.startX;
+           var block_height = this.app.renderer.plugins.interaction.mouse.global.y - this.startY;
            this.block.clear();
 
-           this.block.beginFill("#333333").drawRect(0, 0, block_width, block_height).endFill();
+           this.block.beginFill(0x000000).drawRect(0, 0, block_width, block_height).endFill();
+       
            this.props.changeDimensions(block_width,block_height);
 
        }
@@ -89,14 +86,7 @@ export default class Canvas extends React.Component {
     return (
       <div>
         <div id="background_canvas"></div>
-        <WindowResizeListener onResize={windowSize => {
-        document.getElementById('background_canvas').firstChild.setAttribute("style", "width:"+windowSize.windowWidth+"px;height:"+windowSize.windowHeight+"px;");
-        this.height = windowSize.windowHeight;
-        this.width = windowSize.windowWidth;
-        this.renderer.resize(this.width, this.height);
-        this.loaded();
-        this.props.changeDimensions(0,0);
-      }}/>
+       
       </div>
     );
   }

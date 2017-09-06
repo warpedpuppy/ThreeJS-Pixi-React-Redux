@@ -1,5 +1,8 @@
-React, Pixi, and ReactJS
+<h2>React, Pixi, ThreejS and ReactJS</h2>
+In this app, you can draw a two dimensional rectange:
 
+<img src='https://i.imgur.com/Zsnrn7a.png' />
 
-This will produce two pages.  On the first you can click and drag a rectangle on a canvas element.  Then you can press a button and open a second page that will show the rectangle in 3D using three.js.
+And then render it in 3D:
 
+<img src='https://i.imgur.com/25s3QXD.png' />
